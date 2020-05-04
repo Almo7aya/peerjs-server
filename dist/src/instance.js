@@ -24,6 +24,8 @@ exports.createInstance = ({ app, server, options }) => {
         }
     });
     app.use(options.path, api);
+    // append realm to the app
+    app.set('realm', realm);
     //use mountpath for WS server
     const customConfig = Object.assign(Object.assign({}, config), { path: path_1.default.posix.join(app.path(), options.path, '/') });
     const wss = new webSocketServer_1.WebSocketServer({

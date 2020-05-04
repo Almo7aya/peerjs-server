@@ -33,6 +33,9 @@ export const createInstance = ({ app, server, options }: {
 
   app.use(options.path, api);
 
+  // append realm to the app
+  app.set('realm', realm);
+
   //use mountpath for WS server
   const customConfig = { ...config, path: path.posix.join(app.path(), options.path, '/') };
 
